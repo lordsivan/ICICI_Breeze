@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<title>Sample Google Sheets Data</title>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+		<link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}">
+
+	</head>
+	<body>
+		<div class="w3-container">
+			<h1>{{values.userName}}  <a href='{{ values.loginUrl}}'>Login</a> </h1>
+       
+           
+            
+            <table class="w3-table-all">
+            {% for row in values.table %}
+                <tr>
+                {% with firstrow = loop.index0 == 0 %}
+                {% for value in row %}
+                    {% if firstrow %}
+                        <th>{{ value }}</th>
+                    {% else %}
+                        <td>
+                         {{value}}
+                        </td>
+                    {% endif %}
+                {% endfor %}
+                {% endwith %}
+                </tr>
+            {% endfor %}
+            </table>
+
+          
+
+        </div>
+    </body>
+</html>
